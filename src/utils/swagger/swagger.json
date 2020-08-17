@@ -1,0 +1,337 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "cab booking application",
+    "description": "A minimal example of cab booking service",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "tags": [
+    {
+      "name": "Public",
+      "description": "Public API's"
+    },
+    {
+      "name": "Cab",
+      "description": "Cab API's"
+    },
+    {
+      "name": "User",
+      "description": "User API's"
+    }
+  ],
+  "paths": {
+    "/public/api/v1/user/login": {
+      "post": {
+        "tags": ["Public"],
+        "summary": "user login",
+        "description": "",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "body",
+            "description": "Email of user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "body",
+            "description": "Password of user",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "User not found. Register first"
+          },
+          "200": {
+            "description": "Login Successful"
+          }
+        }
+      }
+    },
+    "/public/api/v1/user/register": {
+      "post": {
+        "tags": ["Public"],
+        "summary": "user register",
+        "description": "",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "user_name",
+            "in": "body",
+            "description": "Name of user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "in": "body",
+            "description": "Phone of user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "body",
+            "description": "Email of user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "body",
+            "description": "Password of user",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "422": {
+            "description": "User already registered with this email"
+          },
+          "200": {
+            "description": "Register Successful"
+          }
+        }
+      }
+    },
+    "/public/api/v1/driver/login": {
+      "post": {
+        "tags": ["Public"],
+        "summary": "driver login",
+        "description": "",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "email",
+            "in": "body",
+            "description": "Email of user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "body",
+            "description": "Password of user",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "User not found. Register first"
+          },
+          "200": {
+            "description": "Login Successful"
+          }
+        }
+      }
+    },
+    "/public/api/v1/driver/register": {
+      "post": {
+        "tags": ["Public"],
+        "summary": "driver register",
+        "description": "",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "driver_name",
+            "in": "body",
+            "description": "Name of driver",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "in": "body",
+            "description": "Phone of user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "email",
+            "in": "body",
+            "description": "Email of user",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "body",
+            "description": "Password of user",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "422": {
+            "description": "User already registered with this email"
+          },
+          "200": {
+            "description": "Register Successful"
+          }
+        }
+      }
+    },
+    "/cab/api/v1/book": {
+      "post": {
+        "tags": ["Cab"],
+        "summary": "cab booking",
+        "description": "",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "cab_id",
+            "in": "body",
+            "description": "Cab Id",
+            "required": true,
+            "type": "number"
+          },
+          {
+            "name": "src_lat",
+            "in": "body",
+            "description": "Source Latitude",
+            "required": true,
+            "type": "float"
+          },
+          {
+            "name": "src_lng",
+            "in": "body",
+            "description": "Source Longitude",
+            "required": true,
+            "type": "float"
+          },
+          {
+            "name": "dest_lat",
+            "in": "body",
+            "description": "Destination Latitude",
+            "required": true,
+            "type": "float"
+          },
+          {
+            "name": "dest_lng",
+            "in": "body",
+            "description": "Destination Longitude",
+            "required": true,
+            "type": "float"
+          },
+          {
+            "name": "fare",
+            "in": "body",
+            "description": "Total Fare",
+            "required": true,
+            "type": "float"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cab Booking History"
+          }
+        }
+      }
+    },
+    "/cab/api/v1/nearby": {
+      "post": {
+        "tags": ["Cab"],
+        "summary": "nearby cabs",
+        "description": "",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "cab_lat",
+            "in": "body",
+            "description": "Latitude",
+            "required": true,
+            "type": "float"
+          },
+          {
+            "name": "cab_lng",
+            "in": "body",
+            "description": "Longitude",
+            "required": true,
+            "type": "float"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Nearest cabs"
+          }
+        }
+      }
+    },
+    "/user/api/v1/booking/history": {
+      "post": {
+        "tags": ["User"],
+        "summary": "cab booking history",
+        "description": "",
+        "consumes": ["application/json"],
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "search",
+            "in": "body",
+            "description": "Search parameter",
+            "required": false,
+            "type": "json"
+          },
+          {
+            "name": "rowNumber",
+            "in": "body",
+            "description": "Row Number",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "recordsPerPage",
+            "in": "body",
+            "description": "Records per page",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "sortBy",
+            "in": "body",
+            "description": "Sort by field",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "sortOrder",
+            "in": "body",
+            "description": "Sort Order",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "showAll",
+            "in": "body",
+            "description": "Show all records",
+            "required": true,
+            "type": "boolean"
+          }
+        ],
+        "responses": {
+          "404": {
+            "description": "User not found. Register first"
+          },
+          "200": {
+            "description": "Login Successful"
+          }
+        }
+      }
+    }
+  }
+}
